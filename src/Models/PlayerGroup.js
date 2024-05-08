@@ -2,7 +2,8 @@ const { DataTypes } = require('sequelize');
 const { FOREIGNKEYS } = require('sequelize/lib/query-types');
 
 module.exports = (sequelize) => {
-  sequelize.define('playergroup', {
+
+  sequelize.define('PlayerGroup', {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
@@ -14,8 +15,13 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false 
     },
+    
 
 
   }, { timestamps: false });
+
+
 };
+
+ 
 

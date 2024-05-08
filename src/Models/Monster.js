@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  sequelize.define('monster', {
+sequelize.define('monster', {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
       allowNull: false 
     },
 
-    alignament:{
+    alignment:{
         type: DataTypes.BOOLEAN,
       allowNull: false 
     },

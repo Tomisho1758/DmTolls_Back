@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  sequelize.define('player', {
+   sequelize.define('Players', {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
@@ -26,14 +26,20 @@ module.exports = (sequelize) => {
     level: {
       type: DataTypes.INTEGER,
       allowNull: false 
+    },
+
+    groupId: {
+      type: DataTypes.BIGINT,
+      allowNull: false
     }
+
+
+
+
   }, { timestamps: false });
+
+  
+
+ 
 };
 
-// Player.associate = (models) => {
-//   // Player belongs to one PlayerGroup
-//   Player.belongsTo(models.playergroup, {
-//     foreignKey: 'playerGroupId', // Set the foreign key in the Player model
-//     as: 'playerGroup' // Alias for the associated PlayerGroup
-//   });
-// };

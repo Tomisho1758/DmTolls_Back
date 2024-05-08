@@ -16,4 +16,3 @@ db.conn.sync()
     });
 
 
-// app.listen (port, ()=>{console.log("el server esta andando")})
