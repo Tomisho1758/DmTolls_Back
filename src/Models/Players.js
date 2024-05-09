@@ -28,10 +28,7 @@ module.exports = (sequelize) => {
       allowNull: false 
     },
 
-    groupId: {
-      type: DataTypes.BIGINT,
-      allowNull: false
-    }
+    
 
 
 

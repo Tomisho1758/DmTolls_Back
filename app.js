@@ -1,10 +1,20 @@
-const express = require ("express")
-const app = express()
-const port = 3000
+const express = require("express");
+const bodyParser = require("body-parser");
+const db = require("./src/DataBase/dataBase");
+const mainRoutes = require("./src/Routes/mainRoutes");
 
+const app = express();
+const port = 3000;
 
-const db = require('./src/DataBase/dataBase');
+// Middleware for parsing JSON bodies
+app.use(bodyParser.json());
+// Middleware for parsing URL-encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
 
+// Route middleware
+app.use("/", mainRoutes);
+
+// Database synchronization and server listening
 db.conn.sync()
     .then(() => {
         app.listen(port, () => {
@@ -12,7 +22,5 @@ db.conn.sync()
         });
     })
     .catch(err => {
-        console.error('Unable to connect to the database:', err );
+        console.error('Unable to connect to the database:', err);
     });
-
-
