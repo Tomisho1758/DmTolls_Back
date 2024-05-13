@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const PlayerGroup = require('./PlayerGroup');
 
 module.exports = (sequelize) => {
-   sequelize.define('encounter', {
+   sequelize.define('Encounter', {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,

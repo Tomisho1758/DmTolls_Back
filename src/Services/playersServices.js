@@ -5,8 +5,7 @@ const playerService = {
       
       const{name,hp,initiativeModifier,armor_class,level}= body
      
-            const newPlayer = await Players.create({
-                  
+            const newPlayer = await Players.create({                  
                   name,
                   hp,
                   initiativeModifier,

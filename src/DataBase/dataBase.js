@@ -31,10 +31,12 @@ fs.readdirSync(path.join(__dirname, "../Models"))
 
 modelDefiners.forEach((model) => model(sequelize));
 
-const { Players, PlayerGroup } = sequelize.models;
+const { Players, PlayerGroup, Monster, Encounter } = sequelize.models;
+
 
 Players.belongsToMany(PlayerGroup, { through: "party", timestamps: false });
-// PlayerGroup.hasMany(Players, {through: "player_id", timestamps: false})
+Encounter.belongsTo(PlayerGroup, {through: "encounter_group", timestamps:false})
+Monster.belongsToMany(Encounter,{through: "encounter_monster", timestamps:false})
 
 module.exports = {
   ...sequelize.models,
