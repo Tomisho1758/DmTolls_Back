@@ -1,7 +1,7 @@
-const{getAll, newEncounter} = require("../Services/encounterServices")
+const{getAll, createEncounter} = require("../Services/encounterServices")
 
 
- export const encounterrController = {
+const encounterController = {
     
     getEncounters : async (req, res)=>{
         try {
@@ -14,12 +14,16 @@ const{getAll, newEncounter} = require("../Services/encounterServices")
     },
     createEncounter : async (req, res)=>{
       try {
-          const newEncounter = await newEncounter(req)
-         res.status(200).json(newEncounter)
+          const createdEncounter = await createEncounter(req)
+          console.log("req.body:",req.body)
+         res.status(200).json(createdEncounter)
       } catch (error) {
-          const newEncounter=[]
-          res.status(200).json(newEncounter)
+          const createdEncounter=[]
+        //   console.log(error.message)
+          res.status(500).json(createdEncounter)
+          
       }
   }
 
  }
+ module.exports= encounterController;
