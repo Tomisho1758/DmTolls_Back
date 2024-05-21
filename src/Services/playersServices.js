@@ -21,7 +21,7 @@ const playerService = {
         return allPlayers;
     },
 
-    getPlayerById: async (id) => {
+    getById: async (id) => {
         const dbPlayersById = await Players.findByPk(id);
         console.log(dbPlayersById);
         return dbPlayersById;
