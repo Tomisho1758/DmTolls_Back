@@ -27,8 +27,14 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false 
     },
+    playerGroupId: {
+      type: DataTypes.UUID,
+      references: {
+        model: 'PlayerGroups',
+        key: 'id'
+      }
 
-    
+    }
 
 
 

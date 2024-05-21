@@ -1,24 +1,28 @@
-const {Monster} = require ("../DataBase/dataBase")
+const { Monsters } = require("../DataBase/dataBase");
 
 const MonsterService = {
-    createMonster: async(body) =>{
-      
-      const{name,hp,initiativeModifier,armor_class,level,alignment}= body
-     
-            const newMonster = await Monster.create({
-                  
-                  name,
-                  hp,
-                  initiativeModifier,
-                  armor_class,
-                  level,
-                  alignment
-                                 
-            });
+  createMonster: async (body) => {
+    const { name, hp, initiativeModifier, armor_class, level, alignment, encounterId } = body;
 
-            console.log('Player registered successfully:', newMonster);
-            return newMonster; 
-        
-    }
-}
-module.exports = MonsterService
+    const newMonster = await Monsters.create({
+      name,
+      hp,
+      initiativeModifier,
+      armor_class,
+      level,
+      alignment,
+      encounterId
+    });
+
+    console.log('Monster registered successfully:', newMonster);
+    return newMonster;
+  },
+
+  getMonstersByEncounter: async (encounterId) => {
+    return await Monsters.findAll({
+      where: { encounterId }
+    });
+  }
+};
+
+module.exports = MonsterService;

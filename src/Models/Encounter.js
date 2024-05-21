@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const PlayerGroup = require('./PlayerGroup');
 
 module.exports = (sequelize) => {
-   sequelize.define('Encounter', {
+   sequelize.define('Encounters', {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
@@ -16,18 +16,20 @@ module.exports = (sequelize) => {
       type: DataTypes.DATE,
       allowNull: false  
     },
-    monsterId: {
-      type: DataTypes.BIGINT,
-      allowNull: false
-    },
-    groupId: {
-      type: DataTypes.BIGINT,
-      allowNull: false
+    playerGroupId: {
+      type: DataTypes.UUID,
+      references: {
+        model: 'PlayerGroups',
+        key: 'id'
+      }
     }
 
 
    
-  }, { timestamps: false });
+  }, { timestamps: false },
+
+
+);
 
   
 };

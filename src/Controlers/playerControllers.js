@@ -1,4 +1,3 @@
-const db = require("../Models/Players");
 const playerService = require("../Services/playersServices");
 
 const playersControllers = {
@@ -9,9 +8,18 @@ const playersControllers = {
       res.status(200).json(newPlayer);
     } catch (error) {
       console.log(error);
-      const newPlayer = [];
-      res.status(400).json(newPlayer);
+      res.status(400).json({ error: "Failed to create player" });
     }
   },
+  getPlayersByGroup: async (req, res) => {
+    try {
+      const players = await playerService.getPlayersByGroup(req.params.groupId);
+      res.status(200).json(players);
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({ error: "Failed to retrieve players" });
+    }
+  }
 };
+
 module.exports = playersControllers;

@@ -1,13 +1,12 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-sequelize.define('Monster', {
+sequelize.define('Monsters', {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
-    },
-    
+    },  
 
     name: {
       type: DataTypes.STRING,
@@ -36,6 +35,13 @@ sequelize.define('Monster', {
       allowNull: false 
     },
 
+    encounterId: {
+      type: DataTypes.UUID,
+      references: {
+        model: 'Encounters',
+        key: 'id'
+      }
+    }
 
 
   }, { timestamps: false });
