@@ -1,5 +1,3 @@
-// const{getAll, newEncounter} = require("../Services/encounterServices")
-
 const encounterService = require("../Services/encounterServices");
 
 const encounterController = {
@@ -12,7 +10,7 @@ const encounterController = {
       res.status(500).json({ error: "Failed to retrieve encounters" });
     }
   },
-  createEncounter: async (req, res) => {
+  create: async (req, res) => {
     try {
       const newEncounter = await encounterService.createEncounter(req.body);
       console.log(newEncounter.msg);

@@ -11,8 +11,6 @@ const encounerRouter = require('./encounterRoutes');
 router.use("/playerGroup",playerGroupRouter);
 router.use("/players", playersRouter);
 router.use("/monsters", monstersRouter);
-
-router.use("/playerGroup",playerGroupRouter);
 router.use("/encounter",encounerRouter);
 
 

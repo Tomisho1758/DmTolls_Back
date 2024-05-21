@@ -12,18 +12,16 @@ const encounterController = {
          res.status(500).json(encounters)
         }
     },
-    createEncounter : async (req, res)=>{
-      try {
-          const createdEncounter = await createEncounter(req)
-          console.log("req.body:",req.body)
-         res.status(200).json(createdEncounter)
-      } catch (error) {
-          const createdEncounter=[]
-        //   console.log(error.message)
-          res.status(500).json(createdEncounter)
-          
+    create: async (req, res) => {
+        try {
+          const newEncounter = await encounterService.createEncounter(req.body);
+          console.log(newEncounter.msg);
+          res.status(200).json(newEncounter);
+        } catch (error) {
+          console.log(error);
+          res.status(400).json({ error: "Failed to create encounter" });
+        }
       }
-  }
 
  }
  module.exports= encounterController;
