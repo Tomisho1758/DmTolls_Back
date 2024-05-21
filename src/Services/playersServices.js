@@ -21,7 +21,17 @@ const playerService = {
     return await Players.findAll({
       where: { playerGroupId: groupId }
     });
-  }
+  },
+  getAll: async () => {
+    const allPlayers = await Players.findAll();
+    return allPlayers;
+},
+
+getById: async (id) => {
+    const dbPlayersById = await Players.findByPk(id);
+    console.log(dbPlayersById);
+    return dbPlayersById;
+}
 };
 
 module.exports = playerService;

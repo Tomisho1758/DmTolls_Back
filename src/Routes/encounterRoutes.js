@@ -1,4 +1,5 @@
 const {Router}= require('express');
+
 const encounterControllers = require('../Controlers/encounterController')
 const encounterRouter= Router();
 

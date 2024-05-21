@@ -1,3 +1,4 @@
+
 const { PlayerGroups, Players } = require("../DataBase/dataBase");
 
 const PlayerGroupService = {
@@ -16,7 +17,18 @@ const PlayerGroupService = {
     return await PlayerGroups.findByPk(groupId, {
       include: [Players]
     });
-  }
+  },
+  getAll: async () => {
+    const allPG = await PlayerGroups.findAll();
+    return allPG;
+},
+
+getById: async (id) => {
+    const dbPGById = await PlayerGroups.findByPk(id);
+    console.log(dbPGById);
+    return dbPGById;
+}
 };
+
 
 module.exports = PlayerGroupService;

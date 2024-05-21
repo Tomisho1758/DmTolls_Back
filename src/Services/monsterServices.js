@@ -22,7 +22,19 @@ const MonsterService = {
     return await Monsters.findAll({
       where: { encounterId }
     });
-  }
+  },
+  allMonstersDb: async() =>{
+    const allMonsters = await Monsters.findAll();
+    return allMonsters
+    } ,
+    getMonsterById : async (id) => {
+           {
+            const dbMonstersById = await Monsters.findByPk(id);
+           console.log(dbMonstersById) 
+           return dbMonstersById
+            
+}
+}
 };
 
 module.exports = MonsterService;
