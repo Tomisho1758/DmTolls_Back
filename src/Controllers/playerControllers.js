@@ -26,7 +26,7 @@ const playersControllers = {
     getById: async (req, res) => {
       try {
         const { id } = req.params;
-      const result = await playerService.getPlayerById(id);
+      const result = await playerService.getById(id);
         res.status(200).json(result);
       } catch (error) {
         console.log("Este es el error del controller",error);
