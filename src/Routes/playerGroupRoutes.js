@@ -1,5 +1,5 @@
 const {Router}= require('express');
-const playerGroupControllers = require('../Controlers/playerGroupControllers')
+const playerGroupControllers = require('../Controllers/playerGroupControllers')
 const playerGroupRouter= Router();
 
 playerGroupRouter.post('/', playerGroupControllers.createPlayerGroup)
