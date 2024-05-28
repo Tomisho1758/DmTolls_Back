@@ -1,6 +1,6 @@
 const { Encounters, Monsters } = require("../DataBase/dataBase");
 
-const encounterService = {
+const EncounterService = {
   createEncounter: async (body) => {
     const { name, createdAt, playerGroupId } = body;
 
@@ -14,11 +14,10 @@ const encounterService = {
     return newEncounter;
   },
 
-  getAll: async () => {
-    return await Encounters.findAll({
-      include: [Monsters]
-    });
-  }
+  allEncounters: async() =>{
+    const allEncounters = await Encounters.findAll();
+    return allEncounters
+    } 
 };
 
-module.exports = encounterService;
+module.exports = EncounterService;

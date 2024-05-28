@@ -1,20 +1,22 @@
-const{getAll, createEncounter} = require("../Services/encounterServices")
+const EncounterService = require("../Services/encounterServices")
 
 
 const encounterController = {
     
-    getEncounters : async (req, res)=>{
-        try {
-         const encounters = await getAll()
-         res.status(200).json(encounters)
-        } catch (error) {
-         const encounters =[]
-         res.status(500).json(encounters)
-        }
+    getEncounters: async (req, res) => {
+      try {
+        const response= await EncounterService.allEncounters();
+        
+        res.status(200).json(response);
+      } catch (error) {
+        console.log("Este es el error del controller",error);
+        const response = [];
+        res.status(400).json(response);
+      }
     },
     create: async (req, res) => {
         try {
-          const newEncounter = await encounterService.createEncounter(req.body);
+          const newEncounter = await EncounterService.createEncounter(req.body);
           console.log(newEncounter.msg);
           res.status(200).json(newEncounter);
         } catch (error) {
