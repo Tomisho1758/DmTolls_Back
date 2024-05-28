@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const db = require("./src/DataBase/dataBase");
 const mainRoutes = require("./src/Routes/mainRoutes");
 
@@ -10,6 +11,14 @@ const port = 3000;
 app.use(bodyParser.json());
 // Middleware for parsing URL-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// CORS middleware
+const corsOptions = {
+    origin: 'http://localhost:5173', // Replace with your frontend domain
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // Allowed headers
+};
+app.use(cors(corsOptions));
 
 // Route middleware
 app.use("/", mainRoutes);
