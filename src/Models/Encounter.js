@@ -16,6 +16,20 @@ module.exports = (sequelize) => {
       type: DataTypes.DATE,
       allowNull: false  
     },
+    playerGroupId: {
+      type: DataTypes.UUID,
+      references: {
+        model: 'PlayerGroups',
+        key: 'id'
+      }
+    }
 
-  }, { timestamps: false });
+
+   
+  }, { timestamps: false },
+
+
+);
+
+  
 };

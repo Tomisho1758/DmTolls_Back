@@ -6,8 +6,7 @@ sequelize.define('Monsters', {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
-    },
-    
+    },  
 
     name: {
       type: DataTypes.STRING,
@@ -36,6 +35,13 @@ sequelize.define('Monsters', {
       allowNull: false 
     },
 
+    encounterId: {
+      type: DataTypes.UUID,
+      references: {
+        model: 'Encounters',
+        key: 'id'
+      }
+    }
 
 
   }, { timestamps: false });

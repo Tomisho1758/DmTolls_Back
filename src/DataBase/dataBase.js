@@ -31,14 +31,12 @@ fs.readdirSync(path.join(__dirname, "../Models"))
 
 modelDefiners.forEach((model) => model(sequelize));
 
-const { Players, PlayerGroups, Monsters, Encounters, Upload } = sequelize.models;
+const { Players, PlayerGroups, Monsters, Encounters } = sequelize.models;
 
-
-Players.belongsToMany(PlayerGroups, { through: "party", timestamps: false });
-Encounters.belongsTo(PlayerGroups, {through: "encounter_group", timestamps:false})
-Monsters.belongsToMany(Encounters,{through: "encounter_monster", timestamps:false})
-Upload.belongsTo(Players, {foreignKey: "avatar", timestamps:false});
-Upload.belongsTo(Monsters, {foreignKey: "avatar", timestamps:false});
+Encounters.belongsTo(PlayerGroups, { foreignKey: 'playerGroupId' });
+PlayerGroups.hasMany(Players, { foreignKey: 'playerGroupId' });
+Encounters.hasMany(Monsters, { foreignKey: 'encounterId' });
+Monsters.belongsTo(Encounters, { foreignKey: 'encounterId' }); // Relación inversa para comodidad
 
 module.exports = {
   ...sequelize.models,
